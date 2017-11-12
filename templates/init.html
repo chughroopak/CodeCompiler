@@ -1,3 +1,11 @@
+<style type="text/css">
+  
+  .ace-monokai
+  {
+    height: 300px;
+  }
+</style>
+
 {% extends 'base.html' %}
 
 {% block navbar_content %}
@@ -34,7 +42,7 @@
           </fieldset>
 
             <label for="code-form">Code</label>
-            <textarea class="form-control" id="source" >
+            <textarea class="form-control" id="source"  style="height: 300px">
 #include <stdio.h>
 
 int main()

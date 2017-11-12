@@ -9,6 +9,7 @@ urlpatterns = [
     url(r'^login/$', auth_views.login, name='login'),
     url(r'^logout/$', auth_views.logout, {'next_page': 'login'}, name='logout'),
     url(r'^htmlviewer$', codeplay),
+    url(r'^userhome$', profile),
     url(r'^signup/$', signup, name='signup'),
     url(r'^base/$', base, name='base'),
 

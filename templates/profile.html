@@ -1,0 +1,189 @@
+
+
+
+{% extends 'base.html' %}
+
+{% block navbar_content %}
+    <li><a style="color: #eee;" href="/userhome">Welcome {{ request.user.username }}!</a></li>
+    <li><a style="color: #eee;" href="/htmlviewer">HTML viewer</a></li>
+    <li><a style="color: #eee;" href="/logout">Logout</a></li>
+{% endblock %}
+
+
+{% block content %}
+<div class="container">
+   <h4>Code Summary</h4>
+ </div>
+ <br>
+
+<!--Output Table: Start-->
+ <div class="container">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Output</th>
+        <th>Compile Status</th>
+        <th>Time (sec)</th>
+        <th>Memory (KB)</th>
+        <th>Code</th>
+      </tr>
+
+      <tr>
+        <td>test</td>
+        <td>Compile Status</td>
+        <td>Time (sec)</td>
+        <td>Memory (KB)</td>
+        <td><button>View</button></td>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+</div>
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Top Search Results</h4>
+        </div>
+        <div class="modal-body" id="search_links">
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+<!-- Formal footer -->
+<div class="footer" id="whoami">
+    <div class="overlayer" style="padding-bottom: 50px;">
+    <div class="container">
+        <div class="row support">
+            <div class="col-sm-3">
+
+            </div>
+            <div class="col-sm-2">
+
+            </div>
+        </div>
+<!-- Div footer has background-image -->
+    </div>
+    </div>
+</div>
+    <style>
+  mark {
+      background-color: #e67676;
+      color: white;
+  }
+</style>
+
+{% endblock %}
+<!--Output Table: END -->
+{% block additional_scripts %}
+<!--  <script>
+
+// Toggle custom input
+$(function(){
+
+    $('label.togvis').click(function() {
+    $(this).parents("fieldset").find("*:not('label')").toggle();
+    return true;
+});
+
+});
+
+//For getting CSRF token
+function getCookie(name) {
+       var cookieValue = null;
+       if (document.cookie && document.cookie != '') {
+         var cookies = document.cookie.split(';');
+         for (var i = 0; i < cookies.length; i++) {
+         var cookie = jQuery.trim(cookies[i]);
+         // Does this cookie string begin with the name we want?
+         if (cookie.substring(0, name.length + 1) == (name + '=')) {
+             cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+             break;
+          }
+     }
+ }
+ return cookieValue;
+}
+
+
+//For doing AJAX post
+ $("#submit").click(function(e) {
+
+   e.preventDefault();
+   var csrftoken = getCookie('csrftoken');
+   //  var lang = $('#lang').val();
+   var e = document.getElementById("lang");
+   var lang = e.options[e.selectedIndex].value;
+   var source = $('#source').val();
+   var input = $('#input_text').val();
+   // This is the Ajax post.Observe carefully.
+  //  It is nothing but details of where_to_post,what_to_post
+
+   $.ajax({
+           url : window.location.href, // the endpoint,commonly same url
+           type : "POST", // http method
+           data : {
+            "csrfmiddlewaretoken" : csrftoken,
+            "lang" : lang,
+            "source" : source,
+            "input" :  input
+           }, // data sent with the post request
+
+          success: function(json){
+              if(json){
+                  var txt = "";
+
+                  // Output
+                  if(json['run_status']['output']){ txt += "<tr><td>"+json['run_status']['output']+"</td>";}
+                  else {txt += "<tr><td>"+ 'NA' +"</td>";}
+                  // Errors
+                  if(json['errors']){ txt += "<td>" + "<mark>" +json['errors']+ "</mark>" + "</td>";}
+                  else {txt += "<td>"+ 'NA' +"</td>";}
+                  // Compile Status
+                  if(json['compile_status'] != "OK"){ txt += "<td>"+ "<mark>" +json['compile_status']+ "</mark>" +"</td>";}
+                  else if(json['compile_status'] == "OK"){ txt += "<td>" +json['compile_status']+ "</td>";}
+                  else {txt += "<td>"+ 'NA' +"</td>";}
+                  // Time used
+                  if(json['run_status']['time_used']){ txt += "<td>"+json['run_status']['time_used']+"</td>";}
+                  else {txt += "<td>"+ 'NA' +"</td>";}
+                  // Memory used
+                  if(json['run_status']['memory_used']){ txt += "<td>"+json['run_status']['memory_used']+"</td></tr>";}
+                  else {txt += "<td>"+ 'NA' +"</td></tr>";}
+                  if(json['debug_urls']){
+                    var search_div = document.getElementById('search_links');
+                    search_div.innerHTML = '<ul>';
+                    for (var i = 0; i < json['debug_urls'].length; i++) {
+                        var j = json['descriptions'][i].toString();
+                        search_div.innerHTML += '<li><a href="' + json['debug_urls'][i] + '" target="_blank">' + j +'</a></li>';
+                        // search_div.innerHTML += json['debug_urls'][i]
+                    }
+                    search_div.innerHTML += '</ul>';
+                  }
+
+                  if(txt != ""){
+                    $("#table").append(txt).removeClass("hidden");
+                  }
+              }
+          },
+          // Display JSON data in table: END
+
+           // handle a non-successful response
+           error : function(xhr,errmsg,err) {
+               // directly append this to planned terminal
+           console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+           }
+    });
+  });
+
+</script> -->
+{% endblock %}

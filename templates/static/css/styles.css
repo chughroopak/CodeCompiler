@@ -2,53 +2,33 @@
 	body{
 		margin: 0;
 		padding: 0;
-		font-family: "HelveticaNeue-Light", "Helvetica Neue Light","Helvetica Neue", Helvetica, Arial,
-		 "Lucida Grande", sans-serif;
 	}
 
 	#menuBar{
 		width: 100%;
 		height: 50px;
-		background-color:#009999;
-		border-bottom: 1px solid grey;
+		background-color:#333;
 	}
 
 	#logo{
-		padding:10px 0 0 20px;
-		font-weight: bold;
+		padding:13px 0 0 20px;
 		font-size: 120%;
 		float:left;
 	}
 
-  #forkMe{
-		float: left;
-		padding:10px 10px 0 50px;
-	}
-
-  	#forkMe img{
-    	height: 25px;
-  	}
-
-  	#counter{
-  		float: left;
-		padding:10px 10px 0 50px;
-  	}
-
-	#RunRun{
+ 	#RunRun{
 		float: right;
-		padding:10px 10px 0 0;
+		padding:7px 5px 5px 5px;
 	}
 
 	#OliverQueen{
-		font-size: 120%;
+		font-size: 100%;
 	}
 
 	#Schindler{
 		width: 202px;
 		margin:0 auto;
 		list-style: none;
-		border:1px solid grey;
-		border-radius: 3px;
 		height:27px;
 		padding: 0;
 		position: relative;
@@ -102,8 +82,9 @@
 	iframe{
 		height: 99.3%;
 		position: relative;
+		right: 0;
     padding-left: none;
-    width: 99%;
+    width: 100%;
 	}
 
 	.selected{

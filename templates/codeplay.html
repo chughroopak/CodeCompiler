@@ -1,86 +1,22 @@
-<!--
-Code.Play Copyright  (c) 2016 Kaustubh Hiware
+{%  extends 'base.html' %}
 
+{% block navbar_content %}
+	<li><a style="color: #eee;" href="/userhome">Welcome {{ request.user.username }}!</a></li>
+    <li><a style="color: #eee;" href="/htmlviewer">HTML viewer</a></li>
+    <li><a style="color: #eee;" href="/logout">Logout</a></li>
 
-                    GNU GENERAL PUBLIC LICENSE
-                       Version 3, 29 June 2007
+{% endblock %}
 
-author - kaustubhhiware
-visit the repo at
-github.com/kaustubhhiware/Code.Play
-
--->
-<!doctype html>
-<html>
-<head>
-<title></title>
-
-<meta charset="utf-8" />
-<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="description" content="Static website builder" />
-
-<!--<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
-
-<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-
-ui.min.js"></script>
--->
-
-<!--code highlight-->
-
-<!--
-<link href="prism.css" rel="stylesheet" type="text/css" />
-<script src="prism.js" type="text/javascript"></script>
-
-<link rel="stylesheet" href="highlight/styles/default.css">
-<script src="highlight/highlight.pack.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
-
-
-	online version conflicts with structure
-<link rel="stylesheet" href="http://cdn.jsdelivr.net/highlight.js/9.4.0/styles/default.min.css">
-<script src="http://cdn.jsdelivr.net/highlight.js/9.4.0/highlight.min.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
- code highlight
- -->
-
-<script type="text/javascript" src="static/jquery-3.0.0.min.js"></script>
-
+{% block content %}
 <link rel="stylesheet" type="text/css" href="static/css/styles.css">
-</head>
-
-<body>
-<!--
-Images and docs can not be added to codeplayer , so be cautious
-if your html page has static links(like/images/arbit.png ) -
-it is advised to use links(say - https://avatars1.githubusercontent.com/u/11318551?v=3&s=400
- for example ) in these cases
-
-visit https://highlightjs.org/download/
- or prismjs.com for code highlight
-
--->
-
-<div id="container">
-
-	<div id="menuBar">
-
-		<div id="logo">
-			<a href="/" style="text-decoration:none"></a>
+    <div id="container-fluid">
+    <div id="menuBar">
+    <div id="logo" style="color: #eee;">
+			Try Your HTML Code Here!
 		</div>
 
-   <div id="forkMe">
-      <a href="https://github.com/kaustubhhiware/Code.Play">
-        <img src="static/img/fork.png" />
-      </a>
-    </div>
-
-    <div id="counter" style="display:none;"><a href="http://www.easy-hit-counter.com" target="_blank"><img src="http://www.easy-hit-counter.com/counter/?id=59912&style=6" width="83" height="21" border="0" alt="www.easy-hit-counter.com"></a>
-<!--<br><font size="1" face="Arial"><a href="http://www.easy-hit-counter.com" target="_blank">www.easy-hit-counter.com</a></font>
---></div>
-
 	<div id="RunRun">
-		<button id="OliverQueen"><img src="static/img/play.png" /> Run</button>
+		<button id="OliverQueen" class="btn btn-success">Run!</button>
 	</div>
 
 	<ul id="Schindler">
@@ -91,8 +27,6 @@ visit https://highlightjs.org/download/
 	</ul>
 
 	</div>
-
-	<div class="clear"> </div>
 
 	<div class="codeBox" id="HTMLBox">
 
@@ -131,7 +65,7 @@ visit https://highlightjs.org/download/
 		<!--</code></pre>-->
 	</div>
 
-	<div class="codeBox" id="ResultBox">
+	<div class="codeBox" id="ResultBox" style="background: white; right: 0;t">
 
 		<div class="codeLabel">Result</div>
 		<iframe id="resultFrame" src=""></iframe>
@@ -139,12 +73,12 @@ visit https://highlightjs.org/download/
 	</div>
 
 </div>
-
+{% endblock %}
 <!--
 <script src="prism.js" type="text/javascript"></script>
 <script type="text/javascript" src="jquery-3.0.0.min.js"></script>
 -->
-
+{% block additional_scripts %}
 
 <!--This is the main script - Da MVP -->
 <script type="text/javascript">
@@ -185,5 +119,4 @@ visit https://highlightjs.org/download/
 		//server , it is ok
 	});
 </script>
-</body>
-</html>
+{% endblock %}

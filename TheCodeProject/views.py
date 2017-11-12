@@ -97,6 +97,7 @@ def codeplay(request):
 
 
 def profile(request):
+    print request
     return render(request, 'profile.html')
 
 def base(request):

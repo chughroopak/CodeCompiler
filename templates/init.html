@@ -243,12 +243,9 @@ function getCookie(name) {
         var editor = ace.edit("source");
         editor.setTheme("ace/theme/monokai");
         editor.getSession().setMode("ace/mode/c_cpp");
-        editor.getSession().maxLines(15);
-        editor.getSession().height(500);
-        editor.setAutoScrollEditorIntoView(true);
-        editor.getSession().resize();
         ace.require("ace/ext/language_tools");
         editor.setOptions({
+            enableBasicAutocompletion:true,
             enableSnippets: true,
             enableLiveAutocompletion: true
         });

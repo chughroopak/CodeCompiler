@@ -95,6 +95,10 @@ def home(request):
 def codeplay(request):
     return render(request, 'codeplay.html')
 
+
+def profile(request):
+    return render(request, 'profile.html')
+
 def base(request):
     return render(request, 'base.html')
 

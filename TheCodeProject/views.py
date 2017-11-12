@@ -40,7 +40,7 @@ def home(request):
             source = request.POST.get('source')
             inputl = request.POST.get('input')
             data = {"lang": lang, "source": source, "input": inputl}
-
+            print (source)
             data = {
                 'client_secret': CLIENT_SECRET,
                 'async': 0,

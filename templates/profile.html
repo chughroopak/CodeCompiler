@@ -23,14 +23,15 @@
         <th>Memory (KB)</th>
         <th>Code</th>
       </tr>
-
+    {% for r in result %}
       <tr>
-        <td>test</td>
-        <td>Compile Status</td>
-        <td>Time (sec)</td>
-        <td>Memory (KB)</td>
-        <td><button>View</button></td>
+          <td>{{ r.run_status_output | safe}}</td>
+        <td>{{ r.compile_status }}</td>
+        <td>{{ r.run_status_time }}</td>
+        <td>{{ r.run_status_memory }}</td>
+        <td><button><a href="/{{ r.code_id }}" target="_blank">View</a></button></td>
       </tr>
+    {% endfor %}
     </thead>
     <tbody>
     </tbody>
